@@ -1,0 +1,16 @@
+resources:
+- manager.yaml
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+configMapGenerator:
+- files:
+  - controller_manager_config.yaml
+  name: manager-config
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+images:
+- digest: sha256:8427bc04cdc70a37ea3009c3458e18e2737dd7d5ac40e97db04ad33a59ac0a6e
+  name: controller
+  newName: ttl.sh/test-image
